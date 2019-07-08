@@ -1,18 +1,17 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import jieba
-
-jieba.enable_parallel(4)
-# Setting up parallel processes :4 ,but unable to run on Windows
 from os import path
-from scipy.misc import imread
 import matplotlib.pyplot as plt
 import os
 import imageio
 # jieba.load_userdict("txt\userdict.txt")
 # add userdict by load_userdict()
 from wordcloud import WordCloud, ImageColorGenerator
+import jieba
+
+jieba.enable_parallel(4)
+# Setting up parallel processes :4 ,but unable to run on Windows
 
 # get data directory (using getcwd() is needed to support running example in generated IPython notebook)
 d = path.dirname(__file__) if "__file__" in locals() else os.getcwd()
@@ -61,7 +60,7 @@ def jieba_processing_txt(text):
 
 words = jieba_processing_txt(text)
 
-wc = WordCloud(font_path=font_path, background_color="white", max_words=2000, mask=back_coloring,
+wc = WordCloud(font_path=font_path, background_color="white", max_words=50, mask=back_coloring,
                max_font_size=100, random_state=42, width=1000, height=860, margin=2, )
 
 wc.generate("".join(words))
