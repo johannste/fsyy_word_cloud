@@ -9,7 +9,6 @@ from os import path
 from scipy.misc import imread
 import matplotlib.pyplot as plt
 import os
-from collections import Counter
 import imageio
 # jieba.load_userdict("txt\userdict.txt")
 # add userdict by load_userdict()
@@ -61,13 +60,11 @@ def jieba_processing_txt(text):
 
 
 words = jieba_processing_txt(text)
-# print(Counter(words))
-
 
 wc = WordCloud(font_path=font_path, background_color="white", max_words=2000, mask=back_coloring,
                max_font_size=100, random_state=42, width=1000, height=860, margin=2, )
 
-wc.generate("".join(dict(Counter(words).most_common(50))))
+wc.generate("".join(words))
 
 # create coloring from image
 image_colors_default = ImageColorGenerator(back_coloring)
